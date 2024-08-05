@@ -1,43 +1,29 @@
 package com.handle.exception.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.handle.exception.entity.Loja;
 import com.handle.exception.interfaces.LojaRepository;
-import com.handle.exception.validation.loja.LojaValidation;
+import com.handle.exception.validation.loja.LojaValidator;
 
-import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
 import br.com.cassol.cas_ms_exception.exception.errors.CustomException;
-import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor
 public class LojaService {
 
 	@Autowired
 	private LojaRepository lojaRepository;
 
-	private LojaValidation lojaValidation;
-
-	@PostConstruct
-	private void initializeValidators() {
-		this.lojaValidation = new LojaValidation(this.lojaRepository);
-	}
-
+	/**
+	 * Faz validações importante e em seguida executa a regra de negocio.
+	 * @param loja entidade para ser cadastrada
+	 * @return entidade da loja salva
+	 * @throws CustomException caso não passe nas validações
+	 */
 	public Loja saveLoja(Loja loja) {
-		List<CustomError> errors = new ArrayList<>();
-
-		this.lojaValidation.validate(loja, errors);
-
-		errors.stream().findFirst().ifPresent(error -> {
-			throw new CustomException(errors);
-		});
-
+		new LojaValidator(loja).validate();
+		
 		return this.lojaRepository.save(loja);
 	}
 }

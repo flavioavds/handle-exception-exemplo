@@ -1,5 +1,7 @@
 package com.handle.exception.validation.loja.regras;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.handle.exception.entity.Loja;
 import com.handle.exception.exception.constants.ErrorMessages;
 import com.handle.exception.interfaces.LojaRepository;
@@ -9,11 +11,8 @@ import br.com.cassol.cas_ms_exception.interfaces.ValidationRule;
 
 public class LojaNameExistsRule implements ValidationRule<Loja> {
 
-	private final LojaRepository lojaRepository;
-
-	public LojaNameExistsRule(LojaRepository lojaRepository) {
-		this.lojaRepository = lojaRepository;
-	}
+	@Autowired
+	private LojaRepository lojaRepository;
 
 	@Override
 	public boolean isValid(Loja loja) {

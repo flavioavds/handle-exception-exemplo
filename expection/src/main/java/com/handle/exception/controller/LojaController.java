@@ -1,5 +1,6 @@
 package com.handle.exception.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,12 +18,8 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/lojas")
 @Validated
 public class LojaController {
-
-	private final LojaService lojaService;
-
-	public LojaController(LojaService lojaService) {
-		this.lojaService = lojaService;
-	}
+	@Autowired
+	private LojaService lojaService;
 
 	@PostMapping
 	public ResponseEntity<Loja> createLoja(@Valid @RequestBody Loja loja) {
