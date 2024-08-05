@@ -1,4 +1,4 @@
-package com.handle.exception.validation.profissional.regras;
+package com.handle.exception.validation.loja.regras;
 
 import com.handle.exception.entity.Profissional;
 import com.handle.exception.exception.constants.ErrorMessages;
