@@ -11,7 +11,7 @@ import br.com.cassol.cas_ms_exception.exception.errors.CustomException;
 public class LojaService {
 
 	@Autowired
-	private LojaRepository lojaRepository;
+	LojaRepository lojaRepository;
 
 	/**
 	 * Faz validações importante e em seguida executa a regra de negocio.
@@ -22,6 +22,6 @@ public class LojaService {
 	public Loja saveLoja(Loja loja) {
 		new LojaValidator(loja).validate();
 		
-		return this.lojaRepository.save(loja);
+		return lojaRepository.save(loja);
 	}
 }

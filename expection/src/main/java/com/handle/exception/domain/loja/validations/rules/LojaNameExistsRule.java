@@ -10,14 +10,13 @@ import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
 import br.com.cassol.cas_ms_exception.interfaces.ValidationRule;
 
 public class LojaNameExistsRule implements ValidationRule<Loja> {
-
 	@Autowired
 	private LojaRepository lojaRepository;
 
 	@Override
-	public boolean isValid(Loja loja) {
-		return !this.lojaRepository.existsByName(loja.getName());
-	}
+	public boolean isValid(Loja loja) { 
+		return !lojaRepository.existsByName(loja.getName());
+		}
 
 	@Override
 	public CustomError getError() {

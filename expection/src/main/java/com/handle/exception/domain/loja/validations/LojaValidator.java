@@ -1,7 +1,5 @@
 package com.handle.exception.domain.loja.validations;
 
-import org.springframework.stereotype.Component;
-
 import com.handle.exception.domain.loja.Loja;
 import com.handle.exception.domain.loja.validations.rules.LojaEmptyRule;
 import com.handle.exception.domain.loja.validations.rules.LojaNameEmptyRule;
@@ -9,7 +7,6 @@ import com.handle.exception.domain.loja.validations.rules.LojaNameExistsRule;
 
 import br.com.cassol.cas_ms_exception.interfaces.Validator;
 
-@Component
 public class LojaValidator extends Validator<Loja> {
 	private Loja loja;
 

@@ -3,8 +3,8 @@ package com.handle.exception.domain.profissional.validations.rules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.handle.exception.domain.profissional.Profissional;
 import com.handle.exception.exception.constants.ErrorMessages;
+import com.handle.exception.domain.profissional.Profissional;
 import com.handle.exception.domain.profissional.ProfissionalRepository;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
@@ -18,7 +18,7 @@ public class CargoExistsRule implements ValidationRule<Profissional> {
 
 	@Override
 	public boolean isValid(Profissional profissional) {
-		return !this.profissionalRepository.existsByCargo(profissional.getCargo());
+		return !profissionalRepository.existsByCargo(profissional.getCargo());
 	}
 
 	@Override

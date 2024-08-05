@@ -27,6 +27,6 @@ public class ProfissionalService {
 			.withExtraValidator(new LojaValidator(loja))
 			.validate();
 		
-		return this.profissionalRepository.save(profissional);
+		return profissionalRepository.save(profissional);
 	}
 }
