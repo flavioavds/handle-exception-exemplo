@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.handle.exception.entity.Profissional;
-import com.handle.exception.services.ProfissionalService2;
+import com.handle.exception.services.ProfissionalService;
 
 import jakarta.validation.Valid;
 
@@ -19,9 +19,9 @@ import jakarta.validation.Valid;
 @Validated
 public class ProfissionalController {
 
-	private final ProfissionalService2 profissionalService;
+	private final ProfissionalService profissionalService;
 
-	public ProfissionalController(ProfissionalService2 profissionalService) {
+	public ProfissionalController(ProfissionalService profissionalService) {
 		this.profissionalService = profissionalService;
 	}
 

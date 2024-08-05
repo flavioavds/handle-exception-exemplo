@@ -10,4 +10,5 @@ public class ErrorMessages {
 	public static final String LOJA_ERROR = "Loja com Id inexistente ";
 	public static final String LOJA_NULL = "Loja com valores nulo ou vazio";
 	public static final String LOJA_NAME_NULL_EMPTY = "Nome da loja com valores nulo ou vazio";
+	public static final String LOJA_NAME_EXISTS = "Nome de Loja já cadastrado";
 }

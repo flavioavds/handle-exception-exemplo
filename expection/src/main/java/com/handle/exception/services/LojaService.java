@@ -3,47 +3,40 @@ package com.handle.exception.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.handle.exception.entity.Loja;
 import com.handle.exception.interfaces.LojaRepository;
-import com.handle.exception.validation.loja.LojaNameValidator;
-import com.handle.exception.validation.loja.LojaNotNullValidator;
+import com.handle.exception.validation.loja.LojaValidation;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
 import br.com.cassol.cas_ms_exception.exception.errors.CustomException;
-import br.com.cassol.cas_ms_exception.interfaces.Validator;
+import jakarta.annotation.PostConstruct;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class LojaService {
 
-	private final LojaRepository lojaRepository;
-	private List<Validator<Loja>> validators;
+	@Autowired
+	private LojaRepository lojaRepository;
 
-	public LojaService(LojaRepository lojaRepository) {
-		this.lojaRepository = lojaRepository;
-		this.initializeValidators();
-	}
+	private LojaValidation lojaValidation;
 
+	@PostConstruct
 	private void initializeValidators() {
-		this.validators = new ArrayList<>();
-
-		Validator<Loja> lojaNotNullValidator = new LojaNotNullValidator();
-		Validator<Loja> lojaNameValidator = new LojaNameValidator();
-		lojaNotNullValidator.linkWith(lojaNameValidator);
-
-		this.validators.add(lojaNotNullValidator);
+		this.lojaValidation = new LojaValidation(this.lojaRepository);
 	}
 
 	public Loja saveLoja(Loja loja) {
 		List<CustomError> errors = new ArrayList<>();
-		for (Validator<Loja> validator : this.validators) {
-			validator.validate(loja, errors);
-		}
 
-		if (!errors.isEmpty()) {
+		this.lojaValidation.validate(loja, errors);
+
+		errors.stream().findFirst().ifPresent(error -> {
 			throw new CustomException(errors);
-		}
+		});
 
 		return this.lojaRepository.save(loja);
 	}

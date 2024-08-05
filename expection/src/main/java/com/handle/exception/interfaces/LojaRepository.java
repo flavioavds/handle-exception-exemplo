@@ -7,4 +7,7 @@ import com.handle.exception.entity.Loja;
 
 @Repository
 public interface LojaRepository extends JpaRepository<Loja, Long> {
+
+	boolean existsByName(String name);
+
 }
