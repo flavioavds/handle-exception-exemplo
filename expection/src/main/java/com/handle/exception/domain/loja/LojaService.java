@@ -1,11 +1,9 @@
-package com.handle.exception.services;
+package com.handle.exception.domain.loja;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.handle.exception.entity.Loja;
-import com.handle.exception.interfaces.LojaRepository;
-import com.handle.exception.validation.loja.LojaValidator;
+import com.handle.exception.domain.loja.validations.LojaValidator;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomException;
 

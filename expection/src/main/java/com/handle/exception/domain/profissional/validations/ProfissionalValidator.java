@@ -1,12 +1,12 @@
-package com.handle.exception.validation.profissional;
+package com.handle.exception.domain.profissional.validations;
 
 import org.springframework.stereotype.Component;
 
-import com.handle.exception.entity.Profissional;
-import com.handle.exception.validation.profissional.regras.CargoEmptyRule;
-import com.handle.exception.validation.profissional.regras.CargoExistsRule;
-import com.handle.exception.validation.profissional.regras.NameEmptyRule;
-import com.handle.exception.validation.profissional.regras.NameExistsRule;
+import com.handle.exception.domain.profissional.Profissional;
+import com.handle.exception.domain.profissional.validations.rules.CargoEmptyRule;
+import com.handle.exception.domain.profissional.validations.rules.CargoExistsRule;
+import com.handle.exception.domain.profissional.validations.rules.NameEmptyRule;
+import com.handle.exception.domain.profissional.validations.rules.NameExistsRule;
 
 import br.com.cassol.cas_ms_exception.interfaces.Validator;
 

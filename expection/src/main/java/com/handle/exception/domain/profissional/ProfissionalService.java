@@ -1,13 +1,11 @@
-package com.handle.exception.services;
+package com.handle.exception.domain.profissional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.handle.exception.entity.Loja;
-import com.handle.exception.entity.Profissional;
-import com.handle.exception.interfaces.ProfissionalRepository;
-import com.handle.exception.validation.loja.LojaValidator;
-import com.handle.exception.validation.profissional.ProfissionalValidator;
+import com.handle.exception.domain.loja.Loja;
+import com.handle.exception.domain.loja.validations.LojaValidator;
+import com.handle.exception.domain.profissional.validations.ProfissionalValidator;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomException;
 

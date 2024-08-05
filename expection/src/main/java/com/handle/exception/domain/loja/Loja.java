@@ -1,4 +1,4 @@
-package com.handle.exception.entity;
+package com.handle.exception.domain.loja;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

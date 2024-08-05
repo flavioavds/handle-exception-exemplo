@@ -1,10 +1,10 @@
-package com.handle.exception.validation.loja.regras;
+package com.handle.exception.domain.loja.validations.rules;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.handle.exception.entity.Loja;
+import com.handle.exception.domain.loja.Loja;
+import com.handle.exception.domain.loja.LojaRepository;
 import com.handle.exception.exception.constants.ErrorMessages;
-import com.handle.exception.interfaces.LojaRepository;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
 import br.com.cassol.cas_ms_exception.interfaces.ValidationRule;

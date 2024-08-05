@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.handle.exception.entity.Loja;
-import com.handle.exception.services.LojaService;
+import com.handle.exception.domain.loja.Loja;
+import com.handle.exception.domain.loja.LojaService;
 
 import jakarta.validation.Valid;
 

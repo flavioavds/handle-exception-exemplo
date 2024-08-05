@@ -1,6 +1,6 @@
-package com.handle.exception.validation.profissional.regras;
+package com.handle.exception.domain.profissional.validations.rules;
 
-import com.handle.exception.entity.Profissional;
+import com.handle.exception.domain.profissional.Profissional;
 import com.handle.exception.exception.constants.ErrorMessages;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;

@@ -1,6 +1,6 @@
-package com.handle.exception.validation.loja.regras;
+package com.handle.exception.domain.loja.validations.rules;
 
-import com.handle.exception.entity.Loja;
+import com.handle.exception.domain.loja.Loja;
 import com.handle.exception.exception.constants.ErrorMessages;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;

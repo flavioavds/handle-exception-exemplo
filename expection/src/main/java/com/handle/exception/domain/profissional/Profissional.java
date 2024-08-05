@@ -1,4 +1,6 @@
-package com.handle.exception.entity;
+package com.handle.exception.domain.profissional;
+
+import com.handle.exception.domain.loja.Loja;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

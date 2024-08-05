@@ -1,11 +1,11 @@
-package com.handle.exception.validation.loja;
+package com.handle.exception.domain.loja.validations;
 
 import org.springframework.stereotype.Component;
 
-import com.handle.exception.entity.Loja;
-import com.handle.exception.validation.loja.regras.LojaEmptyRule;
-import com.handle.exception.validation.loja.regras.LojaNameEmptyRule;
-import com.handle.exception.validation.loja.regras.LojaNameExistsRule;
+import com.handle.exception.domain.loja.Loja;
+import com.handle.exception.domain.loja.validations.rules.LojaEmptyRule;
+import com.handle.exception.domain.loja.validations.rules.LojaNameEmptyRule;
+import com.handle.exception.domain.loja.validations.rules.LojaNameExistsRule;
 
 import br.com.cassol.cas_ms_exception.interfaces.Validator;
 
