@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.handle.exception.entity.Profissional;
 import com.handle.exception.interfaces.LojaRepository;
 import com.handle.exception.interfaces.ProfissionalRepository;
+import com.handle.exception.validation.loja.LojaValidator;
 import com.handle.exception.validation.profissional.ProfissionalValidator;
 
 import br.com.cassol.cas_ms_exception.exception.errors.CustomError;
@@ -17,35 +18,23 @@ import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor
 public class ProfissionalService2 {
 
 	@Autowired
 	private ProfissionalRepository profissionalRepository;
 
-	@Autowired
-	private LojaRepository lojaRepository;
-
-	private ProfissionalValidator profissionalValidator;
-
-	@PostConstruct
-	private void initializeValidators() {
-		this.profissionalValidator = new ProfissionalValidator(this.profissionalRepository, this.lojaRepository);
-	}
-
-	public Profissional saveProfissional(Profissional profissional, Long lojaId) {
-		List<CustomError> errors = new ArrayList<>();
-		// Configurar o ID da loja no validador
-		this.profissionalValidator.setLojaId(lojaId);
-		// Realizar a validação do Profissional
-		this.profissionalValidator.validate(profissional, errors);
-
-		// Verificar se há erros e lançar uma exceção se houver
-		errors.stream().findFirst().ifPresent(error -> {
-			throw new CustomException(errors);
-		});
-
-		// Salvar o Profissional se não houver erros
+	/**
+	 * Faz validações importante e em seguida executa a regra de negocio
+	 * @param profissional entidade do profissional que sera cadastrado caso valido
+	 * @param lojaId loja para cadastrar o profissional
+	 * @return entidade do profissional salvo
+	 * @throws CustomException caso não passe nas validações
+	 */	
+	public Profissional saveProfissional(Profissional profissional, Long lojaId) throws CustomException{
+		var validator = new ProfissionalValidator(profissional)
+			.withExtraValidator(new LojaValidator(lojaId))
+			.validate();
+		
 		return this.profissionalRepository.save(profissional);
 	}
 }
